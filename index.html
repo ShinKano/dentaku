@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    
+<!--
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Number1</label>
+        <input class="form-control" id="numA" name="firstBox" value="this is shin" >
+        
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Number2</label>
+        <input class="form-control" id="numB" name="secondBox">
+      </div>
+      
+      <button type="submit" class="btn btn-primary" onclick="test()" >TEST</button>
+      <button type="submit" class="btn btn-primary" onclick="add()" >ADD</button>
+      <button type="submit" class="btn btn-primary" onclick="sub()" >SUB</button>
+      <button type="submit" class="btn btn-primary" onclick="mlt()" >MLT</button>
+      <button type="submit" class="btn btn-primary" onclick="div()" >DIV</button>
+    </form>
+
+    <div id="sumhtml"></div>
+--><div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Hello, Calclator!</h1>
+        <form>
+          <div class="row">
+            <button type="submit" class="btn btn-primary" onclick="dentaku(1)" >1</button>
+            <button type="submit" class="btn btn-primary" onclick="dentaku(2)" >2</button>
+            <button type="submit" class="btn btn-primary" onclick="dentaku(3)" >3</button>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-primary" onclick="dentaku(4)" >4</button>
+            <button type="submit" class="btn btn-primary" onclick="dentaku(5)" >5</button>
+            <button type="submit" class="btn btn-primary" onclick="dentaku(6)" >6</button>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-primary" onclick="dentaku(7)" >7</button>
+            <button type="submit" class="btn btn-primary" onclick="dentaku(8)" >8</button>
+            <button type="submit" class="btn btn-primary" onclick="dentaku(9)" >9</button>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-primary" onclick="dentaku(0)" >0</button>
+            <button type="submit" class="btn btn-primary" onclick="ac()" >AC</button>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-primary" onclick="plus()" >+</button>
+            <button type="submit" class="btn btn-primary" onclick="minus()" >-</button>
+            <button type="submit" class="btn btn-primary" onclick="equal()" >=</button>
+          </div>
+        </form>
+
+        <div id="html"></div>
+      </div>
+    </div>
+  </div>
+
+    <script>
+
+/*
+      function test() {
+        alert('This is a Test');
+      };
+
+      function add() {
+
+        var numA = document.getElementById('numA');
+        var numB = document.getElementById('numB'); 
+        var numAA = parseInt(numA.value);
+        var numBB = parseInt(numB.value);
+
+        document.getElementById('sumhtml').innerHTML = (numAA + numBB);
+        document.js.firstBox.value = "numBB";
+        event.preventDefault();
+      }
+
+
+
+      function sub() {
+
+        var numA = document.getElementById('numA');
+        var numB = document.getElementById('numB'); 
+        var numAA = parseInt(numA.value);
+        var numBB = parseInt(numB.value);
+
+        document.getElementById('sumhtml').innerHTML = (numAA - numBB);
+        event.preventDefault();
+      }
+
+
+
+      function mlt() {
+
+        var numA = document.getElementById('numA');
+        var numB = document.getElementById('numB'); 
+        var numAA = parseInt(numA.value);
+        var numBB = parseInt(numB.value);
+
+        document.getElementById('sumhtml').innerHTML = (numAA * numBB);
+        event.preventDefault();
+      }
+
+
+
+      function div() {
+
+        var numA = document.getElementById('numA');
+        var numB = document.getElementById('numB'); 
+        var numAA = parseInt(numA.value);
+        var numBB = parseInt(numB.value);
+
+        document.getElementById('sumhtml').innerHTML = (numAA / numBB);
+        event.preventDefault();
+      }
+
+*/
+      var culc =[];
+      var num = 0;
+      var fake = 0;
+      var porm = 0;
+
+      function dentaku(n) {
+        if (porm > 0) {
+          
+        }
+        fake = n;
+        culc.push(n.toString());
+        document.getElementById('html').innerHTML = culc.join('');
+        event.preventDefault();
+
+
+      }
+
+
+/*
+
+      function dentaku(n) {
+        fake = n;
+        if (porm == 1) {
+          num += fake;
+        }else if (porm ==2) {
+          num -= fake;
+        }
+        culc.push(n.toString());
+        document.getElementById('html').innerHTML = culc.join('');
+        event.preventDefault();
+      }
+*/
+
+      function ac() {
+        num = 0;
+        fake = 0;
+        porm = 0;
+        culc.length = 0;
+      }
+
+
+      function equal() {
+        culc.length = 0;
+        if (porm == 1) {
+          num += fake;
+          
+        }else if (porm ==2) {
+          num -= fake;
+         
+        }
+        culc.push(num);
+        document.getElementById('html').innerHTML = culc.join('');
+        event.preventDefault();
+      }
+
+
+      function plus() {
+        if (porm == 0) {
+          num += parseInt(culc.join(''));
+        }
+        porm = 1;
+        culc.push("+");
+        document.getElementById('html').innerHTML = culc.join('');
+        event.preventDefault();
+
+      }
+
+
+      function minus() {
+        if (porm == 0) {
+          num += parseInt(culc.join(''));
+        }
+        porm = 2;
+        culc.push("-");
+        document.getElementById('html').innerHTML = culc.join('');
+        event.preventDefault();
+
+      }
+
+
+/*
+
+      function one() {
+        fake = 1;
+        if (porm == 1) {
+          num += fake;
+        }else if (porm ==2) {
+          num -= fake;
+        }
+        culc.push("1");
+        document.getElementById('html').innerHTML = culc;
+        event.preventDefault();
+      }
+
+      function two() {
+        fake = 2;
+        if (porm == 1) {
+          num += fake;
+        }else if (porm ==2) {
+          num -= fake;
+        }
+        culc.push("2");
+        document.getElementById('html').innerHTML = culc;
+        event.preventDefault();
+      }
+
+      function three() {
+        fake = 3;
+        if (porm == 1) {
+          num += fake;
+        }else if (porm ==2) {
+          num -= fake;
+        }
+        culc.push("3");
+        document.getElementById('html').innerHTML = culc;
+        event.preventDefault();
+      }
+
+       function four() {
+        fake = 4;
+        if (porm == 1) {
+          num += fake;
+        }else if (porm ==2) {
+          num -= fake;
+        }
+        culc.push("4");
+        document.getElementById('html').innerHTML = culc;
+        event.preventDefault();
+      }
+
+       function five() {
+        fake = 5;
+        if (porm == 1) {
+          num += fake;
+        }else if (porm ==2) {
+          num -= fake;
+        }
+        culc.push("5");
+        document.getElementById('html').innerHTML = culc;
+        event.preventDefault();
+      }
+
+  */
+
+
+
+
+    </script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
